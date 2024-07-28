@@ -1,5 +1,8 @@
 ## MergeMinds &mdash; frontend
 
+## Tech
+<img src="https://skillicons.dev/icons?i=svelte," />
+
 ## Requirements
 - node.js &geqslant; 18.18
 - git
