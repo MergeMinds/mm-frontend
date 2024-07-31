@@ -7,7 +7,7 @@
 - node.js &geqslant; 18.18
 - git
 
-### Setting up
+## Setting up
 To set up project use:
 ```bash
 git clone git@github.com:MergeMinds/mm-frontend.git mm-frontend
