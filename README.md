@@ -12,7 +12,7 @@ To set up project use:
 ```bash
 git clone git@github.com:MergeMinds/mm-frontend.git mm-frontend
 cd mm-frontend
-npm install
-npm run dev
+yarn
+yarn dev
 ```
 Then, go to `http://localhost:8000/`. Congratulations!
