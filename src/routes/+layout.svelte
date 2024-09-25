@@ -1,5 +1,8 @@
 <script>
-    import "../app.css"
+  import ThemeProvider from '$lib/components/ThemeProvider.svelte';
+  import '../app.css';
 </script>
 
-<slot />
+<ThemeProvider>
+  <slot />
+</ThemeProvider>
