@@ -32,8 +32,8 @@
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.36.0",
-    "husky": "^9.1.5",
     "globals": "^15.0.0",
+    "husky": "^9.1.5",
     "postcss": "^8.4.40",
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",
@@ -46,6 +46,7 @@
   },
   "type": "module",
   "dependencies": {
+    "lucide-svelte": "^0.453.0",
     "shadcn-svelte": "^0.12.1"
   }
 }
