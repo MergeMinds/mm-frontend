@@ -12,22 +12,22 @@
 </script>
 
 <main class="container mx-auto p-6">
-  <h1 class="text-4xl font-bold mb-4">{course.title}</h1>
+  <h1 class="mb-4 text-4xl font-bold">{course.title}</h1>
 
   <p class="mb-6 text-gray-700">{course.description}</p>
 
-  <h2 class="text-2xl font-semibold mb-2">Модули</h2>
+  <h2 class="mb-2 text-2xl font-semibold">Модули</h2>
 
   <div class="space-y-4">
     {#each course.modules as module}
-      <div class="p-4 border rounded-lg shadow">
+      <div class="rounded-lg border p-4 shadow">
         <h3 class="text-xl font-bold">{module.title}</h3>
-        <ul class="list-disc pl-5 mt-2">
+        <ul class="mt-2 list-disc pl-5">
           {#each module.lessons as lesson}
             <li>{lesson}</li>
           {/each}
         </ul>
-        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Перейти к модулю</button>
+        <button class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">Перейти к модулю</button>
       </div>
     {/each}
   </div>
