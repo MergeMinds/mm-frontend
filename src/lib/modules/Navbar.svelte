@@ -1,6 +1,5 @@
 <script lang="ts">
   import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
-  import { ModeWatcher } from 'mode-watcher';
   import Button from '$lib/components/ui/button/button.svelte';
   import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
   import {
@@ -12,16 +11,17 @@
     ChartPieIcon,
     LogInIcon,
     GitPullRequestIcon,
+    ChevronDownIcon,
+    BookMarkedIcon,
   } from 'lucide-svelte/icons';
   import DropdownMenuShortcut from '$lib/components/ui/dropdown-menu/dropdown-menu-shortcut.svelte';
 
   const authedUser = 'Robert Tolstov'; // TODO: Replace with actual authentication logic
-  // const authedUser = null;
+  //const authedUser = null;
 </script>
 
-<ModeWatcher />
 <nav
-  class="sticky top-0 flex flex-row items-center justify-between border-b-2 border-gray-300 bg-white px-8 py-4 dark:border-gray-900 dark:bg-black lg:px-12">
+  class="sticky top-0 flex flex-row items-center justify-between border-b-2 border-gray-300 bg-white px-8 py-4 dark:border-zinc-900 dark:bg-zinc-950 lg:px-12">
   <a
     href="/"
     class="flex flex-row items-center gap-1 text-2xl font-bold">
@@ -31,6 +31,16 @@
 
   <div class="flex flex-row items-center gap-1">
     {#if authedUser}
+      <a
+        href="/courses"
+        class="hidden lg:flex">
+        <Button
+          variant="outline"
+          class="w-min gap-2 p-2 text-lg lg:p-4">
+          <BookMarkedIcon class="h-5" />
+          Все курсы
+        </Button>
+      </a>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger
           asChild
@@ -41,11 +51,22 @@
             class="w-min gap-2 p-2 text-lg lg:p-4">
             <GraduationCapIcon />
             <span class="line-clamp-1 hidden max-w-48 truncate lg:flex">{authedUser}</span>
+            <ChevronDownIcon
+              class={`transition-all ${builder['data-state'] === 'open' ? '-rotate-180' : 'rotate-0'}`} />
           </Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content
           align="end"
           class="w-56">
+          <DropdownMenu.Group class="block lg:hidden">
+            <a href="/courses">
+              <DropdownMenu.Item class="gap-2">
+                <BookMarkedIcon size="16" />
+                Все курсы
+              </DropdownMenu.Item>
+            </a>
+          </DropdownMenu.Group>
+          <DropdownMenu.Separator class="flex lg:hidden" />
           <DropdownMenu.Group>
             <a href="/profile">
               <DropdownMenu.Item class="gap-2">
@@ -61,7 +82,7 @@
                 <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
               </DropdownMenu.Item>
             </a>
-            <a href="/profile/courses">
+            <a href="/chat">
               <DropdownMenu.Item class="gap-2">
                 <MessageSquareIcon size="16" />
                 Чат
@@ -94,6 +115,13 @@
           class="w-min gap-2 p-2 text-lg lg:p-4">
           <LogInIcon size="16" />
           Вход
+        </Button>
+      </a>
+      <a href="/register">
+        <Button
+          variant="outline"
+          class="w-min gap-2 p-2 text-lg lg:p-4">
+          Регистрация
         </Button>
       </a>
     {/if}
