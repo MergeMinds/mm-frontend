@@ -6,4 +6,7 @@
 
 <ModeWatcher />
 <Navbar />
-<slot />
+
+<main class="container mx-auto my-4">
+  <slot />
+</main>
