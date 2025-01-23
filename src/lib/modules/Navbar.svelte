@@ -21,7 +21,7 @@
 </script>
 
 <nav
-  class="sticky top-0 flex flex-row items-center justify-between border-b-2 border-gray-300 bg-white px-8 py-4 dark:border-zinc-900 dark:bg-zinc-950 lg:px-12">
+  class="sticky top-0 flex flex-row items-center justify-between border-b-[1px] border-gray-300 bg-gray-200 px-8 py-4 dark:border-zinc-500 dark:bg-zinc-950 backdrop-filter backdrop-blur-[10px] bg-opacity-70 dark:bg-opacity-70 lg:px-12">
   <a
     href="/"
     class="flex flex-row items-center gap-1 text-2xl font-bold">
@@ -35,7 +35,7 @@
         href="/courses"
         class="hidden lg:flex">
         <Button
-          variant="outline"
+          variant="ghost"
           class="w-min gap-2 p-2 text-lg lg:p-4">
           <BookMarkedIcon class="h-5" />
           Все курсы
@@ -47,7 +47,7 @@
           let:builder>
           <Button
             builders={[builder]}
-            variant="outline"
+            variant="ghost"
             class="w-min gap-2 p-2 text-lg lg:p-4">
             <GraduationCapIcon />
             <span class="line-clamp-1 hidden max-w-48 truncate lg:flex">{authedUser}</span>
