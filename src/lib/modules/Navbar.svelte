@@ -21,110 +21,113 @@
 </script>
 
 <nav
-  class="sticky top-0 flex flex-row items-center justify-between border-b-[1px] border-gray-300 bg-gray-200 px-8 py-4 dark:border-zinc-500 dark:bg-zinc-950 backdrop-filter backdrop-blur-[10px] bg-opacity-70 dark:bg-opacity-70 lg:px-12">
-  <a
-    href="/"
-    class="flex flex-row items-center gap-1 text-2xl font-bold">
-    <GitPullRequestIcon strokeWidth="3" />
-    MergeMinds
-  </a>
+  class="sticky top-0 border-b-[1px] border-gray-300 bg-gray-200 bg-opacity-70 backdrop-blur-[10px] backdrop-filter dark:border-zinc-700 dark:bg-zinc-950 dark:bg-opacity-70 lg:px-12">
+  <div
+    class="container flex h-full flex-row items-center justify-between px-8 py-4 xl:border-gray-300 xl:dark:border-zinc-700 2xl:border-x-[1px]">
+    <a
+      href="/"
+      class="flex flex-row items-center gap-1 text-2xl font-bold">
+      <GitPullRequestIcon strokeWidth="3" />
+      MergeMinds
+    </a>
 
-  <div class="flex flex-row items-center gap-1">
-    {#if authedUser}
-      <a
-        href="/courses"
-        class="hidden lg:flex">
-        <Button
-          variant="ghost"
-          class="w-min gap-2 p-2 text-lg lg:p-4">
-          <BookMarkedIcon class="h-5" />
-          Все курсы
-        </Button>
-      </a>
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger
-          asChild
-          let:builder>
+    <div class="flex flex-row items-center gap-1">
+      {#if authedUser}
+        <a
+          href="/courses"
+          class="hidden lg:flex">
           <Button
-            builders={[builder]}
             variant="ghost"
             class="w-min gap-2 p-2 text-lg lg:p-4">
-            <GraduationCapIcon />
-            <span class="line-clamp-1 hidden max-w-48 truncate lg:flex">{authedUser}</span>
-            <ChevronDownIcon
-              class={`transition-all ${builder['data-state'] === 'open' ? '-rotate-180' : 'rotate-0'}`} />
+            <BookMarkedIcon class="h-5" />
+            Все курсы
           </Button>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content
-          align="end"
-          class="w-56">
-          <DropdownMenu.Group class="block lg:hidden">
-            <a href="/courses">
-              <DropdownMenu.Item class="gap-2">
-                <BookMarkedIcon size="16" />
-                Все курсы
-              </DropdownMenu.Item>
-            </a>
-          </DropdownMenu.Group>
-          <DropdownMenu.Separator class="flex lg:hidden" />
-          <DropdownMenu.Group>
-            <a href="/profile">
-              <DropdownMenu.Item class="gap-2">
-                <SettingsIcon size="16" />
-                Профиль
-                <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
-              </DropdownMenu.Item>
-            </a>
-            <a href="/profile/courses">
-              <DropdownMenu.Item class="gap-2">
-                <NotebookTextIcon size="16" />
-                Мои курсы
-                <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
-              </DropdownMenu.Item>
-            </a>
-            <a href="/chat">
-              <DropdownMenu.Item class="gap-2">
-                <MessageSquareIcon size="16" />
-                Чат
-                <DropdownMenuShortcut>⌘M</DropdownMenuShortcut>
-              </DropdownMenu.Item>
-            </a>
-            <a href="/profile/statistics">
-              <DropdownMenu.Item class="gap-2">
-                <ChartPieIcon size="16" />
-                Статистика
-                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-              </DropdownMenu.Item>
-            </a>
-          </DropdownMenu.Group>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Group>
-            <a href="/logout">
-              <DropdownMenu.Item class="gap-2">
-                <LogOutIcon size="16" />
-                Выход
-              </DropdownMenu.Item>
-            </a>
-          </DropdownMenu.Group>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
-    {:else}
-      <a href="/login">
-        <Button
-          variant="outline"
-          class="w-min gap-2 p-2 text-lg lg:p-4">
-          <LogInIcon size="16" />
-          Вход
-        </Button>
-      </a>
-      <a href="/register">
-        <Button
-          variant="outline"
-          class="w-min gap-2 p-2 text-lg lg:p-4">
-          Регистрация
-        </Button>
-      </a>
-    {/if}
-    <ThemeSwitch />
+        </a>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger
+            asChild
+            let:builder>
+            <Button
+              builders={[builder]}
+              variant="ghost"
+              class="w-min gap-2 p-2 text-lg lg:p-4">
+              <GraduationCapIcon />
+              <span class="line-clamp-1 hidden max-w-48 truncate lg:flex">{authedUser}</span>
+              <ChevronDownIcon
+                class={`transition-all ${builder['data-state'] === 'open' ? '-rotate-180' : 'rotate-0'}`} />
+            </Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content
+            align="end"
+            class="w-56">
+            <DropdownMenu.Group class="block lg:hidden">
+              <a href="/courses">
+                <DropdownMenu.Item class="gap-2">
+                  <BookMarkedIcon size="16" />
+                  Все курсы
+                </DropdownMenu.Item>
+              </a>
+            </DropdownMenu.Group>
+            <DropdownMenu.Separator class="flex lg:hidden" />
+            <DropdownMenu.Group>
+              <a href="/profile">
+                <DropdownMenu.Item class="gap-2">
+                  <SettingsIcon size="16" />
+                  Профиль
+                  <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+              <a href="/profile/courses">
+                <DropdownMenu.Item class="gap-2">
+                  <NotebookTextIcon size="16" />
+                  Мои курсы
+                  <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+              <a href="/chat">
+                <DropdownMenu.Item class="gap-2">
+                  <MessageSquareIcon size="16" />
+                  Чат
+                  <DropdownMenuShortcut>⌘M</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+              <a href="/profile/statistics">
+                <DropdownMenu.Item class="gap-2">
+                  <ChartPieIcon size="16" />
+                  Статистика
+                  <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+            </DropdownMenu.Group>
+            <DropdownMenu.Separator />
+            <DropdownMenu.Group>
+              <a href="/logout">
+                <DropdownMenu.Item class="gap-2">
+                  <LogOutIcon size="16" />
+                  Выход
+                </DropdownMenu.Item>
+              </a>
+            </DropdownMenu.Group>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+      {:else}
+        <a href="/login">
+          <Button
+            variant="outline"
+            class="w-min gap-2 p-2 text-lg lg:p-4">
+            <LogInIcon size="16" />
+            Вход
+          </Button>
+        </a>
+        <a href="/register">
+          <Button
+            variant="outline"
+            class="w-min gap-2 p-2 text-lg lg:p-4">
+            Регистрация
+          </Button>
+        </a>
+      {/if}
+      <ThemeSwitch />
+    </div>
   </div>
 </nav>
