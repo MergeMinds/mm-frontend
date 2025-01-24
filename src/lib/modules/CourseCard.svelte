@@ -20,7 +20,7 @@
 
 <a href={`/courses/${course.id}`}>
   <Card.Root
-    class="group relative flex min-h-36 flex-col justify-between overflow-hidden transition-all hover:bg-accent">
+    class="group relative flex min-h-40 flex-col justify-between overflow-hidden transition-all hover:bg-accent">
     <div class="absolute -right-10 z-0 opacity-5 transition-all group-hover:-rotate-[15deg]">
       <svelte:component
         this={course.icon}
@@ -28,7 +28,7 @@
         size="128" />
     </div>
     <Card.Header>
-      <Card.Title class="text-2xl leading-tight">
+      <Card.Title class="line-clamp-2 text-2xl leading-tight">
         <span class="max-w-[75%]">{course.title}</span>
       </Card.Title>
     </Card.Header>
