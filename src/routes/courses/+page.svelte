@@ -2,6 +2,7 @@
   import Button from '$lib/components/ui/button/button.svelte';
   import Skeleton from '$lib/components/ui/skeleton/skeleton.svelte';
   import CourseCard, { type CourseCardProps } from '$lib/modules/CourseCard.svelte';
+  import Searchbar from '$lib/modules/Searchbar.svelte';
   import {
     SquareTerminalIcon,
     DatabaseIcon,
@@ -99,14 +100,20 @@
   let courses: CourseCardProps[] = [];
   let loading = true;
   let error: string | null = null;
+  let filter: string = '';
 
   const fetchCourses = async (): Promise<void> => {
-    loading = true;
     error = null;
+    loading = true;
+    courses = [];
     return new Promise<void>((resolve) =>
       setTimeout(() => {
         loading = false;
-        coursesMocks.forEach((element) => courses.push(element));
+        coursesMocks.forEach((element) => {
+          if (!filter || (filter && element.title.toLowerCase().includes(filter.toLowerCase()))) {
+            courses.push(element);
+          }
+        });
         resolve();
       }, 1000),
     );
@@ -115,7 +122,12 @@
   fetchCourses();
 </script>
 
-<h1 class="mt-6 text-5xl font-bold">Курсы</h1>
+<header class="mt-6 grid grid-cols-1 grid-rows-2 gap-8 lg:grid-cols-2 lg:grid-rows-1">
+  <h1 class="text-5xl font-bold">Курсы</h1>
+  <Searchbar
+    bind:filter
+    handleSubmit={fetchCourses} />
+</header>
 
 <div class="my-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
   {#if loading}
