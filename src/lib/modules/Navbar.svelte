@@ -21,9 +21,9 @@
 </script>
 
 <nav
-  class="sticky top-0 border-b-[1px] border-gray-300 bg-gray-200 bg-opacity-70 backdrop-blur-[10px] backdrop-filter dark:border-zinc-700 dark:bg-zinc-950 dark:bg-opacity-70 lg:px-12">
+  class="sticky top-0 border-b-[1px] bg-background bg-opacity-70 backdrop-blur-[10px] backdrop-filter dark:bg-opacity-70 lg:px-12">
   <div
-    class="container flex h-full flex-row items-center justify-between px-8 py-4 xl:border-gray-300 xl:dark:border-zinc-700 2xl:border-x-[1px]">
+    class="container flex h-full flex-row items-center justify-between px-8 py-4 2xl:border-x-[1px]">
     <a
       href="/"
       class="flex flex-row items-center gap-1 text-2xl font-bold">
@@ -40,7 +40,7 @@
             variant="ghost"
             class="w-min gap-2 p-2 text-lg lg:p-4">
             <BookMarkedIcon class="h-5" />
-            Все курсы
+            Обзор
           </Button>
         </a>
         <DropdownMenu.Root>

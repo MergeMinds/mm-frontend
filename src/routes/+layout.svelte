@@ -7,8 +7,7 @@
 <ModeWatcher />
 <Navbar />
 
-<main
-  class="container mx-auto py-12 2xl:border-x-[1px] 2xl:border-gray-300 2xl:dark:border-zinc-700">
+<main class="container mx-auto py-12 2xl:border-x-[1px]">
   <slot />
 </main>
 
