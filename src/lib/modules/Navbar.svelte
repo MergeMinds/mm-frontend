@@ -1,0 +1,143 @@
+<script lang="ts">
+  import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
+  import Button from '$lib/components/ui/button/button.svelte';
+  import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+  import {
+    GraduationCapIcon,
+    LogOutIcon,
+    SettingsIcon,
+    NotebookTextIcon,
+    MessageSquareIcon,
+    ChartPieIcon,
+    LogInIcon,
+    GitPullRequestIcon,
+    ChevronDownIcon,
+    BookMarkedIcon,
+    KeyRoundIcon,
+  } from 'lucide-svelte/icons';
+  import DropdownMenuShortcut from '$lib/components/ui/dropdown-menu/dropdown-menu-shortcut.svelte';
+
+  // const authedUser = 'Robert Tolstov'; // TODO: Replace with actual authentication logic
+  const authedUser = null;
+</script>
+
+<nav
+  class="sticky top-0 z-50 border-b-[1px] bg-background bg-opacity-70 backdrop-blur-[10px] backdrop-filter dark:bg-opacity-70 lg:px-12">
+  <div
+    class="container flex h-full flex-row items-center justify-between px-8 py-4 2xl:border-x-[1px]">
+    <a
+      href="/"
+      class="flex flex-row items-center gap-1 text-2xl font-bold">
+      <GitPullRequestIcon strokeWidth="3" />
+      MergeMinds
+    </a>
+
+    <div class="flex flex-row items-center gap-1">
+      {#if authedUser}
+        <a
+          href="/courses"
+          class="hidden lg:flex">
+          <Button
+            variant="ghost"
+            class="w-min gap-2 p-2 text-lg lg:p-4">
+            <BookMarkedIcon class="h-5" />
+            Обзор
+          </Button>
+        </a>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger
+            asChild
+            let:builder>
+            <Button
+              builders={[builder]}
+              variant="ghost"
+              class="w-min gap-2 p-2 text-lg lg:p-4">
+              <GraduationCapIcon />
+              <span class="line-clamp-1 hidden max-w-48 truncate lg:flex">{authedUser}</span>
+              <ChevronDownIcon
+                class={`transition-all ${builder['data-state'] === 'open' ? '-rotate-180' : 'rotate-0'}`} />
+            </Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content
+            align="end"
+            class="w-56">
+            <DropdownMenu.Group class="block lg:hidden">
+              <a href="/courses">
+                <DropdownMenu.Item class="gap-2">
+                  <BookMarkedIcon size="16" />
+                  Все курсы
+                </DropdownMenu.Item>
+              </a>
+            </DropdownMenu.Group>
+            <DropdownMenu.Separator class="flex lg:hidden" />
+            <DropdownMenu.Group>
+              <a href="/profile">
+                <DropdownMenu.Item class="gap-2">
+                  <SettingsIcon size="16" />
+                  Профиль
+                  <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+              <a href="/profile/courses">
+                <DropdownMenu.Item class="gap-2">
+                  <NotebookTextIcon size="16" />
+                  Мои курсы
+                  <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+              <a href="/chat">
+                <DropdownMenu.Item class="gap-2">
+                  <MessageSquareIcon size="16" />
+                  Чат
+                  <DropdownMenuShortcut>⌘M</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+              <a href="/profile/statistics">
+                <DropdownMenu.Item class="gap-2">
+                  <ChartPieIcon size="16" />
+                  Статистика
+                  <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                </DropdownMenu.Item>
+              </a>
+            </DropdownMenu.Group>
+            <DropdownMenu.Separator />
+            <DropdownMenu.Group>
+              <a href="/logout">
+                <DropdownMenu.Item class="gap-2">
+                  <LogOutIcon size="16" />
+                  Выход
+                </DropdownMenu.Item>
+              </a>
+            </DropdownMenu.Group>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+      {:else}
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger
+            asChild
+            let:builder>
+            <Button
+              builders={[builder]}
+              variant="outline"
+              size="icon">
+              <KeyRoundIcon class="h-[1.2rem] w-[1.2rem]" />
+            </Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content
+            align="end"
+            class="w-36">
+            <DropdownMenu.Group>
+              <DropdownMenu.Item>
+                <a href="/login"> Вход </a>
+              </DropdownMenu.Item>
+              <DropdownMenu.Item>
+                <a href="/register"> Регистрация </a>
+              </DropdownMenu.Item>
+            </DropdownMenu.Group>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+      {/if}
+      <ThemeSwitch />
+    </div>
+  </div>
+</nav>
