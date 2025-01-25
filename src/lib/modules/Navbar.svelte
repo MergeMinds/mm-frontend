@@ -13,11 +13,12 @@
     GitPullRequestIcon,
     ChevronDownIcon,
     BookMarkedIcon,
+    KeyRoundIcon,
   } from 'lucide-svelte/icons';
   import DropdownMenuShortcut from '$lib/components/ui/dropdown-menu/dropdown-menu-shortcut.svelte';
 
-  const authedUser = 'Robert Tolstov'; // TODO: Replace with actual authentication logic
-  //const authedUser = null;
+  // const authedUser = 'Robert Tolstov'; // TODO: Replace with actual authentication logic
+  const authedUser = null;
 </script>
 
 <nav
@@ -111,21 +112,30 @@
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       {:else}
-        <a href="/login">
-          <Button
-            variant="outline"
-            class="w-min gap-2 p-2 text-lg lg:p-4">
-            <LogInIcon size="16" />
-            Вход
-          </Button>
-        </a>
-        <a href="/register">
-          <Button
-            variant="outline"
-            class="w-min gap-2 p-2 text-lg lg:p-4">
-            Регистрация
-          </Button>
-        </a>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger
+            asChild
+            let:builder>
+            <Button
+              builders={[builder]}
+              variant="outline"
+              size="icon">
+              <KeyRoundIcon class="h-[1.2rem] w-[1.2rem]" />
+            </Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content
+            align="end"
+            class="w-36">
+            <DropdownMenu.Group>
+              <DropdownMenu.Item>
+                <a href="/login"> Вход </a>
+              </DropdownMenu.Item>
+              <DropdownMenu.Item>
+                <a href="/register"> Регистрация </a>
+              </DropdownMenu.Item>
+            </DropdownMenu.Group>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
       {/if}
       <ThemeSwitch />
     </div>
