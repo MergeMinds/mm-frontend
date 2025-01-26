@@ -49,6 +49,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@tanstack/svelte-query": "^5.64.2",
     "shadcn-svelte": "^0.12.1"
   }
 }
