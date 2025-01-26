@@ -1,27 +1,21 @@
-import type { Credentials, User } from '$models/user';
+import { mocksEnabled, type Response } from '$api/base';
+import type { UserCredentials, User } from '$models/user';
 
-const mocksEnabled = true;
-
-export interface BaseResponse {
-  status: number;
-  message?: string;
-}
-
-export type Response<T> = BaseResponse & T;
-
-export const fetchUserCredentials = async (id: number): Promise<Response<Credentials>> => {
+export const fetchUserCredentials = async (id: number): Promise<Response<UserCredentials>> => {
   if (!mocksEnabled) {
     console.log(id);
   }
 
-  return new Promise<Response<Credentials>>(() =>
+  return new Promise<Response<UserCredentials>>((resolve) =>
     setTimeout(
-      () => ({
-        id: 1,
-        firstName: 'Robert',
-        lastName: 'Tolstov',
-        username: 'robertproducts',
-      }),
+      () =>
+        resolve({
+          status: 200,
+          id: 1,
+          firstName: 'Иван',
+          lastName: 'Петров',
+          username: 'ipetrov2002',
+        }),
       2000,
     ),
   );
@@ -32,14 +26,50 @@ export const fetchUser = async (id: number): Promise<Response<User>> => {
     console.log(id);
   }
 
-  return new Promise<Response<User>>(() =>
+  return new Promise<Response<User>>((resolve) =>
     setTimeout(
-      () => ({
-        id: 1,
-        firstName: 'Robert',
-        lastName: 'Tolstov',
-        username: 'robertproducts',
-      }),
+      () =>
+        resolve({
+          status: 200,
+          id: 1,
+          firstName: 'Иван',
+          lastName: 'Петров',
+          username: 'ipetrov2002',
+          email: 'ipetrov2002@mail.ru',
+        }),
+      2000,
+    ),
+  );
+};
+
+export const fetchSessionUserCredentials = async (): Promise<Response<UserCredentials>> => {
+  return new Promise<Response<UserCredentials>>((resolve) =>
+    setTimeout(
+      () =>
+        resolve({
+          status: 200,
+          id: 1,
+          firstName: 'Иван',
+          lastName: 'Петров',
+          username: 'ipetrov2002',
+        }),
+      2000,
+    ),
+  );
+};
+
+export const fetchSessionUser = async (): Promise<Response<User>> => {
+  return new Promise<Response<User>>((resolve) =>
+    setTimeout(
+      () =>
+        resolve({
+          status: 200,
+          id: 1,
+          firstName: 'Иван',
+          lastName: 'Петров',
+          username: 'ipetrov2002',
+          email: 'ipetrov2002@mail.ru',
+        }),
       2000,
     ),
   );
